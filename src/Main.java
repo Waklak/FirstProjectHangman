@@ -70,7 +70,7 @@ public class Main{
                 nextGameAnswer = sc.nextLine();
             }
             if(nextGameAnswer.equals("N")){
-
+                checking.used.clear();
             }
             else if(nextGameAnswer.equals("E")){
                 playAgain = false;
