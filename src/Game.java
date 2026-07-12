@@ -3,18 +3,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-
-    private String filename = "GameWords2.txt";
-    private ConstructionPrint construction = new ConstructionPrint();
-    public CheckInput checking = new CheckInput();
+    private final HangmanPrinter construction = new HangmanPrinter();
+    public InputChecker checking = new InputChecker();
     public Scanner sc = new Scanner(System.in);
 
-    public void startGame(){
+    public void startGame() throws Exception {
         System.out.println("\n\nИгра виселица. Ты должен угадать слово по одной букве\n" +
                 "В начале тебе даётся 7 попыток\n" +
                 "После каждой неверной буквы будет рисоваться часть виселицы\n\n");
 
-        List<Character> gameWord = WordChoise.choise(filename);
+        String filename = "GameWords2.txt";
+        List<Character> gameWord = WordPicker.chooseWord(filename);
         List<Character> display = new ArrayList<>();
         boolean curStatus = true;
         int tryCount = 0;
@@ -65,8 +64,8 @@ public class Game {
 
     private void printDisplayWord(List<Character> charWord){
         System.out.println("Твоё слово:\n");
-        for(int i = 0; i < charWord.size(); i++){
-            System.out.print(charWord.get(i) + " ");
+        for(Character character : charWord){
+            System.out.print(character + " ");
         }
         System.out.println("\n\n");
     }

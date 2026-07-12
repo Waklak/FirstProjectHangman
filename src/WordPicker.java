@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class WordChoise {
-    public static List<Character> choise(String filename){
+public class WordPicker {
+    public static List<Character> chooseWord(String filename){
         try(BufferedReader br = new BufferedReader(new FileReader(filename))){
             //Получение случайного слова из файла
             List<String> words = new ArrayList<String>();
-            Random rnd = new Random();
+            Random random = new Random();
             String line ;
 
             while((line = br.readLine()) != null){
@@ -20,14 +20,14 @@ public class WordChoise {
                 System.out.println("Файл не содержит слов. Игра невозможна");
                 System.exit(0);
             }
-            String Word = words.get(rnd.nextInt(words.size()));
+            String word = words.get(random.nextInt(words.size()));
             //Преобразование его в итоговый список
-            List<Character> res = new ArrayList<>();
+            List<Character> result = new ArrayList<>();
 
-            for(char c : Word.toCharArray()){
-                res.add(c);
+            for(char c : word.toCharArray()){
+                result.add(c);
             }
-            return res;
+            return result;
         }
         catch (IOException e) {
             System.out.print("Ошибка при чтении файла!");
